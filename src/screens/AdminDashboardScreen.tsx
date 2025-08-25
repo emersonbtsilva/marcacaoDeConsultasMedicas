@@ -9,6 +9,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { RootStackParamList } from '../types/navigation';
 import theme from '../styles/theme';
 import Header from '../components/Header';
+import UserManagement from '../components/UserManagement';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type AdminDashboardScreenProps = {
@@ -65,6 +66,7 @@ const AdminDashboardScreen: React.FC = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'appointments' | 'users'>('appointments');
 
   const loadData = async () => {
     try {
@@ -90,9 +92,9 @@ const AdminDashboardScreen: React.FC = () => {
 
   // Carrega os dados quando a tela estiver em foco
   useFocusEffect(
-    React.useCallback(() => {
-      loadData();
-    }, [])
+      React.useCallback(() => {
+        loadData();
+      }, [])
   );
 
   const handleUpdateStatus = async (appointmentId: string, newStatus: 'confirmed' | 'cancelled') => {
@@ -115,83 +117,86 @@ const AdminDashboardScreen: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Header />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Title>Painel Administrativo</Title>
+      <Container>
+        <Header />
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <Title>Painel Administrativo</Title>
 
-        <Button
-          title="Gerenciar Usuários"
-          onPress={() => navigation.navigate('UserManagement')}
-          containerStyle={styles.button as ViewStyle}
-          buttonStyle={styles.buttonStyle}
-        />
+          {/* Abas de navegação */}
+          <TabContainer>
+            <TabButton
+                active={activeTab === 'appointments'}
+                onPress={() => setActiveTab('appointments')}
+            >
+              <TabText active={activeTab === 'appointments'}>Consultas</TabText>
+            </TabButton>
+            <TabButton
+                active={activeTab === 'users'}
+                onPress={() => setActiveTab('users')}
+            >
+              <TabText active={activeTab === 'users'}>Usuários</TabText>
+            </TabButton>
+          </TabContainer>
 
-        <Button
-          title="Meu Perfil"
-          onPress={() => navigation.navigate('Profile')}
-          containerStyle={styles.button as ViewStyle}
-          buttonStyle={styles.buttonStyle}
-        />
-
-        <SectionTitle>Últimas Consultas</SectionTitle>
-        {loading ? (
-          <LoadingText>Carregando dados...</LoadingText>
-        ) : appointments.length === 0 ? (
-          <EmptyText>Nenhuma consulta agendada</EmptyText>
-        ) : (
-          appointments.map((appointment) => (
-            <AppointmentCard key={appointment.id}>
-              <ListItem.Content>
-                <ListItem.Title style={styles.doctorName as TextStyle}>
-                  {appointment.doctorName}
-                </ListItem.Title>
-                <ListItem.Subtitle style={styles.specialty as TextStyle}>
-                  {appointment.specialty}
-                </ListItem.Subtitle>
-                <Text style={styles.dateTime as TextStyle}>
-                  {appointment.date} às {appointment.time}
-                </Text>
-                <StatusBadge status={appointment.status}>
-                  <StatusText status={appointment.status}>
-                    {getStatusText(appointment.status)}
-                  </StatusText>
-                </StatusBadge>
-                {appointment.status === 'pending' && (
-                  <ButtonContainer>
-                    <Button
-                      title="Confirmar"
-                      onPress={() => handleUpdateStatus(appointment.id, 'confirmed')}
-                      containerStyle={styles.actionButton as ViewStyle}
-                      buttonStyle={styles.confirmButton}
-                    />
-                    <Button
-                      title="Cancelar"
-                      onPress={() => handleUpdateStatus(appointment.id, 'cancelled')}
-                      containerStyle={styles.actionButton as ViewStyle}
-                      buttonStyle={styles.cancelButton}
-                    />
-                  </ButtonContainer>
+          {activeTab === 'appointments' ? (
+              <>
+                <SectionTitle>Últimas Consultas</SectionTitle>
+                {loading ? (
+                    <LoadingText>Carregando dados...</LoadingText>
+                ) : appointments.length === 0 ? (
+                    <EmptyText>Nenhuma consulta agendada</EmptyText>
+                ) : (
+                    appointments.map((appointment) => (
+                        <AppointmentCard key={appointment.id}>
+                          <ListItem.Content>
+                            <ListItem.Title style={styles.doctorName as TextStyle}>
+                              {appointment.doctorName}
+                            </ListItem.Title>
+                            <ListItem.Subtitle style={styles.specialty as TextStyle}>
+                              {appointment.specialty}
+                            </ListItem.Subtitle>
+                            <Text style={styles.dateTime as TextStyle}>
+                              {appointment.date} às {appointment.time}
+                            </Text>
+                            <StatusBadge status={appointment.status}>
+                              <StatusText status={appointment.status}>
+                                {getStatusText(appointment.status)}
+                              </StatusText>
+                            </StatusBadge>
+                            {appointment.status === 'pending' && (
+                                <ButtonContainer>
+                                  <Button
+                                      title="Confirmar"
+                                      onPress={() => handleUpdateStatus(appointment.id, 'confirmed')}
+                                      containerStyle={styles.actionButton as ViewStyle}
+                                      buttonStyle={styles.confirmButton}
+                                  />
+                                  <Button
+                                      title="Cancelar"
+                                      onPress={() => handleUpdateStatus(appointment.id, 'cancelled')}
+                                      containerStyle={styles.actionButton as ViewStyle}
+                                      buttonStyle={styles.cancelButton}
+                                  />
+                                </ButtonContainer>
+                            )}
+                          </ListItem.Content>
+                        </AppointmentCard>
+                    ))
                 )}
-              </ListItem.Content>
-            </AppointmentCard>
-          ))
-        )}
-
-        <Button
-          title="Sair"
-          onPress={signOut}
-          containerStyle={styles.button as ViewStyle}
-          buttonStyle={styles.logoutButton}
-        />
-      </ScrollView>
-    </Container>
+              </>
+          ) : (
+              <UserManagement onSignOut={signOut} />
+          )}
+        </ScrollView>
+      </Container>
   );
 };
 
 const styles = {
   scrollContent: {
     padding: 20,
+    paddingBottom: 40,
+    flexGrow: 1,
   },
   button: {
     marginBottom: 20,
@@ -237,6 +242,7 @@ const styles = {
 const Container = styled.View`
   flex: 1;
   background-color: ${theme.colors.background};
+  position: relative;
 `;
 
 const Title = styled.Text`
@@ -298,4 +304,26 @@ const ButtonContainer = styled.View`
   margin-top: 8px;
 `;
 
-export default AdminDashboardScreen; 
+const TabContainer = styled.View`
+  flex-direction: row;
+  background-color: ${theme.colors.surface};
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid ${theme.colors.border};
+`;
+
+const TabButton = styled.TouchableOpacity<{ active: boolean }>`
+  flex: 1;
+  padding: 12px;
+  align-items: center;
+  background-color: ${(props: { active: any; }) => props.active ? theme.colors.primary : 'transparent'};
+  border-radius: 8px;
+`;
+
+const TabText = styled.Text<{ active: boolean }>`
+  color: ${(props: { active: any; }) => props.active ? '#fff' : theme.colors.text};
+  font-weight: ${(props: { active: any; }) => props.active ? 'bold' : 'normal'};
+  font-size: 16px;
+`;
+
+export default AdminDashboardScreen;

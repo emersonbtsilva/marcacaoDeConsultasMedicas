@@ -62,3 +62,6 @@ const UserName = styled.Text`
 `;
 
 export default Header;
+
+export class HeaderContainer {
+}

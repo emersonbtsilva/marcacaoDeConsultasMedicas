@@ -9,6 +9,9 @@ export default {
       warning: '#FFC107',
       white: '#FFFFFF',
       border: '#DEE2E6',
+      surface() {
+
+      }
    },
    typography: {
       title: {

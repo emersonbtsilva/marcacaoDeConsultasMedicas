@@ -57,6 +57,7 @@ export interface LoginCredentials {
  * Dados necessários para registro
  */
 export interface RegisterData {
+  userType: string;
   name: string;
   email: string;
   password: string;
