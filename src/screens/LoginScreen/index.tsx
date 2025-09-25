@@ -5,10 +5,11 @@ import { ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/navigation';
-import { Container, styles } from './styles';
+import { Container } from './styles';
 import AppTitle from './components/AppTitle';
 import ErrorMessage from './components/ErrorMessage';
 import CredentialsHint from './components/CredentialsHint';
+import { styles } from './components/styles';
 import { useLogin } from './hooks/useLogin';
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorText } from '../../styles';
+import { ErrorText } from './styles';
 
 interface ErrorMessageProps {
   message: string;

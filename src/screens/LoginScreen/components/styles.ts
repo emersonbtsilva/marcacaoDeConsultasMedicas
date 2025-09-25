@@ -1,14 +1,5 @@
-import styled from 'styled-components/native';
-import theme from '../../styles/theme';
-
 import { StyleSheet } from 'react-native';
-
-export const Container = styled.View`
-  flex: 1;
-  padding: 20px;
-  justify-content: center;
-  background-color: ${theme.colors.background};
-`;
+import theme from '../../../styles/theme';
 
 export const styles = StyleSheet.create({
   input: {

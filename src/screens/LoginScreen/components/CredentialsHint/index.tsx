@@ -1,5 +1,5 @@
 import React from 'react';
-import { HintText, CredentialsText } from '../../styles';
+import { HintText, CredentialsText } from './styles';
 
 const CredentialsHint: React.FC = () => (
   <>
