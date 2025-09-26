@@ -1,13 +1,9 @@
 ### GRUPO:
 
-
 ### - Emerson Batista da Silva RM: 96288
 ### - Leonardo Yukio Uliana Seno RM : 550648
 ### - Eduardo Cicero dos Santos RM: 551415
 ### - Lucas Fernandes Marabini Gaspar RM: 98814
-
-
-
 
 # Sistema de Agendamento de Consultas Médicas
 
