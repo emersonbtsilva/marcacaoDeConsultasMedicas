@@ -137,9 +137,6 @@ Para contribuir com o projeto:
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Autores
-
-- **Professor Hete Caetano** - [hete.caetano@fiap.com.br](mailto:hete.caetano@fiap.com.br)
 
 ## Agradecimentos
 
