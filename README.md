@@ -1,10 +1,10 @@
 ### GRUPO:
 
 
-### - NOME Emerson Batista da Silva RM: 96288
-### - NOME Leonardo Yukio Uliana Seno RM : 550648
-### - NOME Eduardo Cicero dos Santos RM: 551415
-### - NOME Lucas Fernandes Marabini Gaspar RM: 98814
+### - Emerson Batista da Silva RM: 96288
+### - Leonardo Yukio Uliana Seno RM : 550648
+### - Eduardo Cicero dos Santos RM: 551415
+### - Lucas Fernandes Marabini Gaspar RM: 98814
 
 
 
