@@ -28,6 +28,26 @@ Este é um aplicativo mobile desenvolvido em React Native para agendamento de co
 - Validação de datas e horários
 - Seleção de médicos por especialidade
 
+Aplicativo para marcação de consultas médicas com identidade visual autoral, integração com calendário e feedbacks visuais em todas as ações.  
+O projeto segue boas práticas de design, acessibilidade e uso ético de inteligência artificial no apoio ao desenvolvimento.
+
+---
+
+## 🎨 **Identidade Visual**
+
+- **Nome do App:** *Saúde+ (exemplo — personalize se quiser)*  
+- **Logotipo:** inserido na pasta `/assets/logo.png`  
+- **Paleta de cores:**
+  - Primária: `#00A896`
+  - Secundária: `#05668D`
+  - Erro: `#E63946`
+  - Sucesso: `#06D6A0`
+  - Fundo: `#F0F3F5`
+- **Tipografia:** *Poppins*  
+- **Justificativa:**  
+  As cores foram escolhidas para transmitir calma, confiança e equilíbrio, associadas ao tema da saúde.  
+  A tipografia Poppins foi usada por ser moderna, limpa e de fácil leitura.
+
 ## Tecnologias Utilizadas
 
 - [React Native](https://reactnative.dev/) - Framework para desenvolvimento mobile
