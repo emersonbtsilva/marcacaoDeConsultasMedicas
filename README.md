@@ -35,8 +35,8 @@ O projeto segue boas práticas de design, acessibilidade e uso ético de intelig
 
 ## 🎨 **Identidade Visual**
 
-- **Nome do App:
-- **Logotipo:** inserido na pasta `/assets/logo.png`  
+- **Nome do App:**
+- **Logotipo:**
 - **Paleta de cores:**
   - Primária: `#00A896`
   - Secundária: `#05668D`
@@ -47,6 +47,10 @@ O projeto segue boas práticas de design, acessibilidade e uso ético de intelig
 - **Justificativa:**  
   As cores foram escolhidas para transmitir calma, confiança e equilíbrio, associadas ao tema da saúde.  
   A tipografia Poppins foi usada por ser moderna, limpa e de fácil leitura.
+
+## 🧱 **Arquitetura do Projeto**
+
+O aplicativo foi organizado com base em uma arquitetura em camadas:
 
 ## Tecnologias Utilizadas
 
