@@ -35,7 +35,7 @@ O projeto segue boas práticas de design, acessibilidade e uso ético de intelig
 
 ## 🎨 **Identidade Visual**
 
-- **Nome do App:** *Saúde+ (exemplo — personalize se quiser)*  
+- **Nome do App:
 - **Logotipo:** inserido na pasta `/assets/logo.png`  
 - **Paleta de cores:**
   - Primária: `#00A896`
