@@ -1,40 +1,18 @@
-export default {
-   colors: {
-      primary: '#4A90E2',
-      secondary: '#6C757D',
-      background: '#F8F9FA',
-      text: '#212529',
-      error: '#DC3545',
-      success: '#28A745',
-      warning: '#FFC107',
-      white: '#FFFFFF',
-      border: '#DEE2E6',
-      surface() {
+export const appName = "Saúde+";
 
-      }
-   },
-   typography: {
-      title: {
-         fontSize: 24,
-         fontWeight: 'bold',
-      },
-      subtitle: {
-         fontSize: 18,
-         fontWeight: '600',
-      },
-      body: {
-         fontSize: 16,
-         fontWeight: 'normal',
-      },
-      caption: {
-         fontSize: 14,
-         fontWeight: 'normal',
-      },
-   },
-   spacing: {
-      small: 8,
-      medium: 16,
-      large: 24,
-      xlarge: 32,
-   },
+export const theme = {
+    colors: {
+        primary: "#00BFA5",      // Verde-água (saúde e bem-estar)
+        secondary: "#00796B",    // Verde mais escuro
+        background: "#E0F2F1",   // Fundo suave
+        text: "#004D40",         // Texto em verde-escuro
+        error: "#D32F2F",        // Vermelho para erros
+        success: "#388E3C",      // Verde para sucesso
+        border: undefined
+    },
+    fonts: {
+        regular: "Roboto-Regular",
+        bold: "Roboto-Bold",
+    },
 };
+export default theme;
